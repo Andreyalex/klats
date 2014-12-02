@@ -43,9 +43,12 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => true,
             'rules' => require(__DIR__ . '/routes.php')
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
         ]
     ],
-    'params' => $params,
+    'params' => $params
 ];
 
 if (YII_ENV_DEV) {

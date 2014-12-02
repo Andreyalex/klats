@@ -1,8 +1,57 @@
 <?php
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
+
+    <h2><?= \Yii::t('app', 'Свежие'); ?></h2>
+    <div class="row">
+        <?php foreach ($publicChallenges as $challenge) { ?>
+            <div class="challenge preview col-lg-3">
+                <a href="<?= Url::to(['challenge/show', 'id' => $challenge->id]); ?>">
+                    <span><?= \Yii::t('app', $challenge->title); ?></span>
+                </a>
+                <div class="desc"><?= \Yii::t('app', $challenge->description); ?></div>
+            </div>
+        <?php } ?>
+    </div>
+
+    <h2><?= \Yii::t('app', 'Мои'); ?></h2>
+    <div class="row">
+        <?php foreach ($myChallenges as $challenge) { ?>
+            <div class="challenge preview col-lg-3">
+                <a href="<?= Url::to(['challenge/show', 'id' => $challenge->id]); ?>">
+                    <span><?= \Yii::t('app', $challenge->title); ?></span>
+                </a>
+                <div class="desc"><?= \Yii::t('app', $challenge->description); ?></div>
+            </div>
+        <?php } ?>
+    </div>
+
+    <h2><?= \Yii::t('app', 'Учавствую'); ?></h2>
+    <div class="row">
+        <?php foreach ($takenChallenges as $challenge) { ?>
+            <div class="challenge preview col-lg-3">
+                <a href="<?= Url::to(['challenge/show', 'id' => $challenge->id]); ?>">
+                    <span><?= \Yii::t('app', $challenge->title); ?></span>
+                </a>
+                <div class="desc"><?= \Yii::t('app', $challenge->description); ?></div>
+            </div>
+        <?php } ?>
+    </div>
+
+    <h2><?= \Yii::t('app', 'Друзья'); ?></h2>
+    <div class="row">
+        <?php foreach ($friends as $user) { ?>
+            <div class="user preview col-lg-3">
+                <a href="<?= Url::to(['user/show', 'id' => $challenge->id]); ?>">
+                    <span><?= \Yii::t('app', $user->name); ?></span>
+                </a>
+                <div class="desc"><?= \Yii::t('app', $user->login); ?></div>
+            </div>
+        <?php } ?>
+    </div>
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>

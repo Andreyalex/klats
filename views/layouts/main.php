@@ -26,7 +26,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'CLATTS',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -34,16 +34,19 @@ AppAsset::register($this);
             ]);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
-                    Yii::$app->user->isGuest ?
-                        ['label' => 'Login', 'url' => ['/site/login']] :
+                'items' =>
+                    Yii::$app->user->isGuest?
+                    [
+                        ['label' => 'Login', 'url' => ['/site/login']],
+                        ['label' => 'About', 'url' => ['/site/about']],
+                    ] :
+                    [
+                        ['label' => 'Создать челендж', 'url' => ['/challenge/create']],
                         ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                            'url' => ['/site/logout'],
-                            'linkOptions' => ['data-method' => 'post']],
-                ],
+                         'url' => ['/site/logout'],
+                         'linkOptions' => ['data-method' => 'post']
+                        ]
+                    ]
             ]);
             NavBar::end();
         ?>
@@ -64,6 +67,37 @@ AppAsset::register($this);
     </footer>
 
 <?php $this->endBody() ?>
+
+<style>
+    .navbar-brand {
+        color: #aaa !important;
+        /*transition: text-shadow 0.1s;*/
+    }
+
+    .navbar-brand.highlight {
+        text-shadow: 0px 0px 10px #bdf;
+    }
+
+</style>
+<script>
+    $(function(){
+        var f = function() {
+
+            var has = $('.navbar-brand').hasClass('highlight'),
+                interval = Math.abs(Math.random()* (has? 1000 : 50));
+
+            setTimeout(function(){
+                has?
+                    $('.navbar-brand').removeClass('highlight'):
+                    $('.navbar-brand').addClass('highlight');
+                f()
+            }, interval);
+        }
+        f();
+    })
+
+</script>
+
 </body>
 </html>
 <?php $this->endPage() ?>

@@ -10,18 +10,31 @@ namespace app\models\traits;
 
 use app\models\exceptions\NotFound;
 
-
 trait Crud
 {
-    public static function findOne($id, $mustExist = false)
+    public static function requireOne($condition)
     {
         /** @var self \yii\db\ActiveRecord */
-        $row = parent::findOne($id);
+        if (!$res = self::findOne($condition)) {
+            throw new NotFound('Item not found');
+        }
+        return $res;
+    }
 
-        if ($mustExist && $row === null) {
-            throw new NotFound(__CLASS__ . ' has no entity with id ' . $id);
+
+    public static function deleteById($id)
+    {
+        self::deleteAll('id = :id', [':id' => (int)$id]);
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            if (isset($this->createdDate) && empty($this->createdDate)) {
+                $this->createdDate = date('Y-m-d H:i:s');
+            }
         }
 
-        return $row;
+        return parent::beforeSave($insert);
     }
 }

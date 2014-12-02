@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Challenge;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -49,7 +51,18 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $result = array(
+            'publicChallenges' => Challenge::findPublicLatest(10),
+        );
+
+        if (Yii::$app->user) {
+            $user = User::requireOne(Yii::$app->user->id);
+            $result['takenChallenges'] = $user->takenChallenges;
+            $result['myChallenges'] = $user->myChallenges;
+            $result['friends'] = $user->friends;
+        }
+
+        return $this->render('index', $result);
     }
 
     public function actionLogin()
