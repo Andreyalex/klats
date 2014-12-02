@@ -19,7 +19,7 @@ use letyii\tinymce\Tinymce as Wysiwyg;
                 'plugins' => [
                     "advlist autolink lists link image charmap print preview anchor",
                     "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste jbimages"
+                    "insertdatetime media table contextmenu paste /web/tinymce/plugins/jbimages"
                 ],
                 'toolbar' =>
                     "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link image jbimages",

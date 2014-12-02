@@ -40,6 +40,11 @@ INSTALLATION
 Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
 a directory named `basic` that is directly under the Web root.
 
+Copy content of
+addons/tinymce/plugins/
+to
+vendor/letyii/yii2-tinymce/tinymce/plugins/
+
 You can then access the application through the following URL:
 
 ~~~
