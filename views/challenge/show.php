@@ -6,11 +6,18 @@ use \yii\helpers\Url;
 /* @var $model app\models\Challenge */
 $solutions = $model->solutions;
 ?>
-<div class="challenge-show">
+<div class="challenge challenge-show">
 
     <div id="challenge">
-        <h2><?= \Yii::t('app', $model->title); ?></h2>
-        <div><?= $model->description ?></div>
+        <?php if ($model->title) { ?>
+            <?php if ($model->image) { ?>
+                <a href="<?=$model->image->urlFull?>" target="_blank" class="image-title">
+                    <img src="<?=$model->image->urlSquare?>">
+                </a>
+            <?php } ?>
+            <h1 class="title"><?=\Yii::t('app', $model->title)?></h1>
+        <?php } ?>
+        <div class="description"><?=$model->description?></div>
     </div>
 
     <div class="controls">

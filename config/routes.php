@@ -2,6 +2,7 @@
 
 return [
     '/' => 'site/index',
+    'login' => 'site/login',
     'user/<id:\d+>' => 'user/show',
     'user/create' => 'user/create',
     'user/delete' => 'user/delete',

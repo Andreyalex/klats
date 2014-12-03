@@ -10,9 +10,12 @@ use letyii\tinymce\Tinymce as Wysiwyg;
 
     <h1><?=Yii::t('app', 'Изменить')?></h1>
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype'=>'multipart/form-data']]); ?>
 
         <?= $form->field($model, 'title')->input('text'); ?>
+
+        <div class="image"><img src="<?=$model->image->urlPreview ?>"></div>
+        <?= $form->field($model, 'file')->fileInput(); ?>
 
         <?= $form->field($model, 'description')->widget(Wysiwyg::className(), [
             'configs' => [
@@ -40,7 +43,8 @@ use letyii\tinymce\Tinymce as Wysiwyg;
         <?= Html::activeHiddenInput($model, 'id'); ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Создать', ['class' => 'btn btn-success']) ?>
+            <span onclick="window.history.back()" class="btn btn-default"><?=Yii::t('app', 'Отмена')?></span>
         </div>
 
     <?php ActiveForm::end(); ?>

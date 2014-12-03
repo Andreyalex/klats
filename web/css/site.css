@@ -96,3 +96,53 @@ a.desc:after {
     float: left;
     border-radius: 50px;
 }
+
+.title {
+    overflow: hidden;
+    float: left;
+}
+
+.image-title {
+    overflow: hidden;
+    float: left;
+}
+
+.image-title img {
+    max-width: 100px;
+    max-height: 100px;
+    float: left;
+    border-radius: 50px;
+}
+
+.description {
+    clear: both;
+}
+
+.description img {
+    clear: both;
+    max-width: 400px;
+    max-height: 800px;
+}
+
+/* Challenge */
+
+.challenge-show .title {
+    margin: 30px 20px;
+}
+
+.challenge-show .description {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+/* Solution */
+
+.solution-show .title {
+    margin: 30px 20px;
+}
+
+.solution-show .description {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

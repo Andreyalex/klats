@@ -10,6 +10,7 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 use app\models\traits\Crud;
+use app\models\Image;
 
 /**
  * Class Challenge
@@ -17,6 +18,7 @@ use app\models\traits\Crud;
  *
  * @property $id
  * @property $title
+ * @property $imageId
  * @property $description
  * @property $createdDate
  * @property $userId
@@ -24,6 +26,7 @@ use app\models\traits\Crud;
  *
  * Relations:
  * @property $solutions
+ * @property $image
  *
  */
 class Challenge extends ActiveRecord
@@ -32,6 +35,8 @@ class Challenge extends ActiveRecord
 
     const IS_PRIVATE = 0;
     const IS_PUBLIC = 1;
+
+    public $file;
 
     /**
      * @return string the name of the table associated with this ActiveRecord class.
@@ -89,4 +94,8 @@ class Challenge extends ActiveRecord
         return $this->hasMany(Solution::className(), ['challengeId' => 'id']);
     }
 
+    public function getImage()
+    {
+        return Image::findOne($this->imageId);
+    }
 }

@@ -42,7 +42,7 @@ AppAsset::register($this);
                     ] :
                     [
                         ['label' => 'Создать челендж', 'url' => ['/challenge/create']],
-                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['label' => 'Logout (' . Yii::$app->user->identity->login . ')',
                          'url' => ['/site/logout'],
                          'linkOptions' => ['data-method' => 'post']
                         ]

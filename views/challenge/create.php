@@ -11,9 +11,11 @@ use letyii\tinymce\Tinymce as Wysiwyg;
 
     <h1><?=Yii::t('app', 'Новое задание')?></h1>
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype'=>'multipart/form-data']]); ?>
 
         <?= $form->field($model, 'title')->input('text'); ?>
+
+        <?= $form->field($model, 'file')->fileInput(); ?>
 
         <?= $form->field($model, 'description')->widget(Wysiwyg::className(), [
             'configs' => [
@@ -41,7 +43,7 @@ use letyii\tinymce\Tinymce as Wysiwyg;
 
         <div class="form-group">
             <?= Html::submitButton('Создать', ['class' => 'btn btn-success']) ?>
-            <?= Html::submitButton('Отмена', ['class' => 'btn btn-default']) ?>
+            <span onclick="window.history.back()" class="btn btn-default"><?=Yii::t('app', 'Отмена')?></span>
         </div>
 
     <?php ActiveForm::end(); ?>

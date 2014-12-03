@@ -8,17 +8,13 @@
 
 namespace app\models\forms;
 
-use app\models\Image;
 use yii\base\Model;
-use yii\web\UploadedFile;
-
 /**
- * Class Challenge
+ * Class Solution
  * @package app\models\forms
  *
  * @property $id
  * @property $title
- * @property $upload
  * @property $description
  * @property $createdDate
  * @property $userId
@@ -26,21 +22,18 @@ use yii\web\UploadedFile;
  *
  * Relations:
  * @property $solutions
- * @property $image
  *
  */
-class Challenge extends \app\models\Challenge
+class Solution extends \app\models\Solution
 {
     public function rules()
     {
         return [
             ['id', 'number'],
             ['title', 'string'],
-            ['file', 'image'],
             ['description', 'string'],
             ['description', 'required'],
-            ['userId', 'number'],
-            ['isPublic', 'boolean']
+            ['userId', 'number']
         ];
     }
 
@@ -48,20 +41,8 @@ class Challenge extends \app\models\Challenge
     {
         return [
             'title' => 'Название',
-            'file' => 'Фото',
             'description' => 'Описание',
             'isPublic' => 'Доступно всем'
         ];
-    }
-
-    public function beforeSave($insert)
-    {
-        if (!empty($_FILES['Challenge']['name']['file'])) {
-            $img = new Image;
-            $img->upload($this, 'file');
-            $img->save();
-            $this->imageId = $img->id;
-        }
-        return parent::beforeSave($insert);
     }
 }

@@ -17,6 +17,7 @@ use app\models\traits\Crud;
  *
  * @property $id
  * @property $title
+ * @property $mainImage
  * @property $description
  * @property $createdDate
  * @property $userId
