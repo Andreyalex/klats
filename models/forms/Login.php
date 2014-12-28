@@ -1,14 +1,15 @@
 <?php
 
-namespace app\models;
+namespace app\models\forms;
 
 use Yii;
 use yii\base\Model;
+use app\models\UserAuth;
 
 /**
- * LoginForm is the model behind the login form.
+ * Login is the model behind the login form.
  */
-class LoginForm extends Model
+class Login extends Model
 {
     public $login;
     public $password;
@@ -70,7 +71,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = You::findByLogin($this->login);
+            $this->_user = UserAuth::findByLogin($this->login);
         }
 
         return $this->_user;

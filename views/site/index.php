@@ -17,6 +17,7 @@ $this->title = 'My Yii Application';
         <?php } ?>
     </div>
 
+    <?php if (isset($myChallenges)) { ?>
     <h2><?= \Yii::t('app', 'Мои'); ?></h2>
     <div class="row">
         <?php foreach ($myChallenges as $challenge) { ?>
@@ -28,7 +29,9 @@ $this->title = 'My Yii Application';
             </div>
         <?php } ?>
     </div>
+    <?php } ?>
 
+    <?php if (isset($takenChallenges)) { ?>
     <h2><?= \Yii::t('app', 'Учавствую'); ?></h2>
     <div class="row">
         <?php foreach ($takenChallenges as $challenge) { ?>
@@ -40,8 +43,9 @@ $this->title = 'My Yii Application';
             </div>
         <?php } ?>
     </div>
+    <?php } ?>
 
-    <h2><?= \Yii::t('app', 'Друзья'); ?></h2>
+    <?php if (isset($friends)) { ?>
     <div class="row">
         <?php foreach ($friends as $user) { ?>
             <div class="user preview col-lg-3">
@@ -52,6 +56,7 @@ $this->title = 'My Yii Application';
             </div>
         <?php } ?>
     </div>
+    <?php } ?>
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>

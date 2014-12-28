@@ -10,6 +10,7 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 use app\models\traits\Crud;
+use \yii\web\IdentityInterface;
 
 /**
  * Class User
@@ -21,6 +22,8 @@ use app\models\traits\Crud;
  * @property $name
  * @property $createdDate
  * @property $updatedDate
+ * @property $authKey
+ * @property $accessToken
  */
 class User extends ActiveRecord
 {

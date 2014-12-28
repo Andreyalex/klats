@@ -8,7 +8,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
+use app\models\forms\Login;
 use app\models\ContactForm;
 
 class SiteController extends Controller
@@ -55,7 +55,7 @@ class SiteController extends Controller
             'publicChallenges' => Challenge::findPublicLatest(10),
         );
 
-        if (Yii::$app->user) {
+        if (Yii::$app->user && Yii::$app->user->id) {
             $user = User::requireOne(Yii::$app->user->id);
             $result['takenChallenges'] = $user->takenChallenges;
             $result['myChallenges'] = $user->myChallenges;
@@ -71,7 +71,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new Login();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {

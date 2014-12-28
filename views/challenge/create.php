@@ -1,9 +1,9 @@
 <?php
 
-use Yii;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use letyii\tinymce\Tinymce as Wysiwyg;
+use app\components\ImagesWidget;
 
 /** @var $model app\models\Challenge */
 ?>
@@ -14,6 +14,12 @@ use letyii\tinymce\Tinymce as Wysiwyg;
     <?php $form = ActiveForm::begin(['options' => ['enctype'=>'multipart/form-data']]); ?>
 
         <?= $form->field($model, 'title')->input('text'); ?>
+
+        <?= ImagesWidget::widget([
+            'urlAdd' => 'challenge/image/add',
+            'urlDelete' => 'challenge/image/delete',
+
+        ]) ?>
 
         <?= $form->field($model, 'file')->fileInput(); ?>
 
