@@ -17,7 +17,7 @@ use \yii\web\IdentityInterface;
  * @package app\models
  *
  * @property $id
- * @property $login
+ * @property $username
  * @property $password
  * @property $name
  * @property $createdDate

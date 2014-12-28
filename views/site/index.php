@@ -52,7 +52,7 @@ $this->title = 'My Yii Application';
                 <a href="<?= Url::to(['user/show', 'id' => $challenge->id]); ?>">
                     <span><?= \Yii::t('app', $user->name); ?></span>
                 </a>
-                <div class="desc"><?= \Yii::t('app', $user->login); ?></div>
+                <div class="desc"><?= \Yii::t('app', $user->username); ?></div>
             </div>
         <?php } ?>
     </div>

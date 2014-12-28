@@ -48,6 +48,19 @@ $config = [
             'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
         ]
     ],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'urlPrefix' => 'account',
+            'enableUnconfirmedLogin' => true,
+            'confirmWithin' => 21600,
+            'cost' => 12,
+            'admins' => ['admin'],
+            'urlRules' => [
+                'confirm/<id:\d+>/<code:\w+>' => 'registration/confirm', // fix parameter bad naming
+            ]
+        ]
+    ],
     'params' => $params
 ];
 

@@ -68,7 +68,7 @@ class Registration extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = UserAuth::findByLogin($this->login);
+            $this->_user = UserAuth::findByLogin($this->username);
         }
 
         return $this->_user;

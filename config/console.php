@@ -14,6 +14,7 @@ return [
         'gii' => 'yii\gii\Module',
         'user' => [
             'class' => 'dektrium\user\Module',
+            'urlPrefix' => 'accounts',
             'enableUnconfirmedLogin' => true,
             'confirmWithin' => 21600,
             'cost' => 12,

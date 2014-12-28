@@ -10,7 +10,7 @@ $this->title = 'User info';
         <span>Id</span><span><?php echo $model->id; ?></span>
     </div>
     <div class="item">
-        <span>Login</span><span><?php echo $model->login; ?></span>
+        <span>Login</span><span><?php echo $model->username; ?></span>
     </div>
     <div class="item">
         <span>Name</span><span><?php echo $model->name; ?></span>
